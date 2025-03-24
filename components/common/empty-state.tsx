@@ -10,7 +10,7 @@ export function EmptyState({ onRestore }: EmptyStateProps) {
       </div>
       <h3 className="text-xl font-medium mb-2">No tasks scheduled</h3>
       <p className="text-muted-foreground mb-6 max-w-md">
-        You don't have any tasks scheduled for today. Add new tasks or restore the default schedule.
+        You don&apos;t have any tasks scheduled for today. Add new tasks or restore the default schedule.
       </p>
       <Button onClick={onRestore}>Restore Default Schedule</Button>
     </div>

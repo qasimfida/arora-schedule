@@ -7,17 +7,8 @@ import { EmptyState } from "@/components/common/empty-state"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { RefreshCw, MoreVertical, Calendar, Trash2 } from "lucide-react"
 import { toast } from "sonner"
+import { TaskType } from "@/types"
 
-// Task type definition
-type TaskType = {
-  id: number
-  title: string
-  time: string
-  description: string
-  status: "pending" | "completed" | "skipped"
-}
-
-// Initial tasks data
 const initialTasks: TaskType[] = [
   {
     id: 1,
@@ -69,7 +60,6 @@ export function DailySchedule() {
 
   const updateTaskStatus = (id: number, status: "completed" | "skipped" | "pending") => {
     const task = tasks.find((t) => t.id === id)
-    const previousStatus = task?.status || "pending"
 
     setTasks(tasks.map((task) => (task.id === id ? { ...task, status } : task)))
 
@@ -132,7 +122,7 @@ export function DailySchedule() {
           <DropdownMenuContent align="end">
             <DropdownMenuItem onClick={restoreDefaultSchedule}>
               <Calendar className="h-4 w-4 mr-2" />
-              Today's Schedule
+              Today&apos;s Schedule
             </DropdownMenuItem>
             <DropdownMenuItem onClick={clearTasks}>
               <Trash2 className="h-4 w-4 mr-2" />
@@ -146,7 +136,7 @@ export function DailySchedule() {
         <>
           <div className="flex justify-between items-center mb-6">
             <div>
-              <h2 className="text-xl font-semibold">Today's Progress</h2>
+              <h2 className="text-xl font-semibold">Today&apos;s Progress</h2>
               <p className="text-muted-foreground">
                 {completedTasks} completed, {skippedTasks} skipped, {totalTasks - completedTasks - skippedTasks} pending
               </p>
@@ -157,12 +147,10 @@ export function DailySchedule() {
             </Button>
           </div>
 
-          {/* Progress bar */}
           <div className="w-full h-2 bg-muted rounded-full mb-8">
             <div className="h-full bg-primary rounded-full" style={{ width: `${progressPercentage}%` }} />
           </div>
 
-          {/* Tasks list */}
           <div className="space-y-4">
             {tasks.map((task) => (
               <Task
