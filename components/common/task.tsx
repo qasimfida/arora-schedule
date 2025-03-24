@@ -4,18 +4,8 @@ import { CheckCircle, Clock, SkipForward } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
+import { TaskProps } from "@/types"
 
-type TaskProps = {
-  task: {
-    id: number
-    title: string
-    time: string
-    description: string
-    status: "pending" | "completed" | "skipped"
-  }
-  onComplete: () => void
-  onSkip: () => void
-}
 
 export function Task({ task, onComplete, onSkip }: TaskProps) {
   return (
